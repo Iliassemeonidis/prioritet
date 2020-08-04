@@ -14,6 +14,7 @@ public class CreateDocument {
         }
 
         $(byText("Создать документ")).click();
+        sleep(1000);
         boolean visible = $(byText(documentName)).isDisplayed();
         if (visible) {
             $(byText(documentName)).click();
@@ -25,19 +26,23 @@ public class CreateDocument {
             sleep(10000);
         }
 
+        if (!$(byText("Создать")).is(Condition.visible)) {
+
+            $(byText("Создать")).scrollIntoView(true);
+        }
         $(byText("Создать")).click();
     }
     public static void createDoc(String documentName,String otherNAme){
 
         $(byText("Создать документ")).click();
 
-        sleep(10000);
+        sleep(1000);
 
         if ($(byText(documentName)).is(Condition.visible)) {
             $(byText(documentName)).click();
 
            sleep(1000);
-            if ($$(byText(otherNAme)).size() > 2) {
+            if ($$(byText(otherNAme)).size() > 3) {
 
                     $(byText(otherNAme)).click();
             }
@@ -84,12 +89,69 @@ public class CreateDocument {
         }
         $(byText("Создать")).click();
     }
-    public static void createInDoc(String documentName, String documentName1){
+    public static void createGovernanceDocuments(String groupName, String protocolGroup, String protocol){
+
+
+        if (!$(byText("Создать документ")).is(Condition.visible)) {
+            UserChange.exit();
+            UserChange.comInAutotest1();
+        }
+
+
         $(byText("Создать документ")).click();
+         sleep(1000);
+        if (!$(byText(groupName)).is(Condition.visible)) {
+            $(byText(groupName)).scrollIntoView(true);
+        }
+        if ($$(byText(groupName)).size() > 1) {
+            $$(byText(groupName)).first().click();
+        } else {
+
+            $(byText(groupName)).click();
+        }
+        sleep(1000);
+        if (!$(byText(protocolGroup)).is(Condition.visible)) {
+            $(byText(protocolGroup)).scrollIntoView(true);
+        }
+        if ($$(byText(protocolGroup)).size() > 1) {
+
+            $$(byText(protocolGroup)).last().click();
+        } else {
+
+            $(byText(protocolGroup)).click();
+        }
+        sleep(10000);
+        if (!$(byText(protocol)).is(Condition.visible)) {
+            $(byText(protocol)).scrollIntoView(true);
+        }
+        $$(byText(protocol)).last().click();
+
+
+        if (!($(byText("Создать")).is(Condition.visible))) {
+            $(byText("Создать")).scrollIntoView(true);
+        }
+        $(byText("Создать")).click();
+    }
+
+
+    public static void createWithTowNames(String documentName, String otherNAme) {
+        if (!$(byText("Создать документ")).is(Condition.visible)) {
+            UserChange.exit();
+            UserChange.comInAutotest1();
+        }
+        $(byText("Создать документ")).click();
+
+        if (!$(byText(documentName)).is(Condition.visible)) {
+            $(byText(documentName)).scrollIntoView(true);
+        }
         $(byText(documentName)).click();
         sleep(1000);
-        $(byText(documentName1)).click();
-        sleep(1000);
+        $(byText(otherNAme)).click();
+
+
+        if (!($(byText("Создать")).is(Condition.visible))) {
+            $(byText("Создать")).scrollIntoView(true);
+        }
         $(byText("Создать")).click();
     }
 
