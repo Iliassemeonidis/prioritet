@@ -44,7 +44,14 @@ public class Buttons {
     private final static String Accept_the_report = "Принять отчет";
     private final static String  FURTHER = "Далее";
     private final static String COMPLETE_TASKS = "Завершенные задания";
+    private final static String  CREATE_ON_RESOLUTION = "Создать подрезолюцию";
 
+
+
+
+
+
+    public static void createOnResolution(){ $(byText(CREATE_ON_RESOLUTION)).click(); }
     public static void complete_tasks(){ $(byText(COMPLETE_TASKS)).click(); }
     public static void further(){ $(byText(FURTHER)).click(); }
     public static void accept_the_report(){ $(byText(Accept_the_report)).click(); }

@@ -66,6 +66,10 @@ public class WorkWithDocuments {
             $$(byText("Выписка из протоколов"))
                     .first()
                     .click();
+        }else if ($(byText("Протокол")).is(Condition.visible)) {
+            $$(byText("Протокол"))
+                    .first()
+                    .click();
         }
 
     }

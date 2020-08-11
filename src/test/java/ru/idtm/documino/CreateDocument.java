@@ -84,13 +84,15 @@ public class CreateDocument {
             }
             sleep(10000);
         }
+        if ($(byText(otherNAme)).is(Condition.visible)) {
+            $(byText(otherNAme)).click();
+        }
         if (!($(byText("Создать")).is(Condition.visible))) {
             $(byText("Создать")).scrollIntoView(true);
         }
         $(byText("Создать")).click();
     }
     public static void createGovernanceDocuments(String groupName, String protocolGroup, String protocol){
-
 
         if (!$(byText("Создать документ")).is(Condition.visible)) {
             UserChange.exit();
@@ -103,6 +105,7 @@ public class CreateDocument {
         if (!$(byText(groupName)).is(Condition.visible)) {
             $(byText(groupName)).scrollIntoView(true);
         }
+
         if ($$(byText(groupName)).size() > 1) {
             $$(byText(groupName)).first().click();
         } else {

@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class OpenBrowser {
 
     private static String leSt = "http://172.25.144.151/";
-    private static String leProd = "http://172.25.144.163";
+    private static String leProd = "http://172.25.144.163/";
     private static String leTest = "https://le-sedo.devel/";
     private static String volsSt = "http://185.187.112.58/";
     private static String rossSet = "http://172.24.68.146";
@@ -49,7 +49,7 @@ public class OpenBrowser {
 
     public static void openLeProd() {
         browser = "firefox";
-        open("http://172.25.144.163");// прод
+        open("http://172.25.144.163/");// прод
 
     }
 
