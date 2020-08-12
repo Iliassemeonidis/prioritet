@@ -55,7 +55,7 @@ public class OpenBrowser {
 
     public static void openLeTest() {
         browser = "firefox";
-       // browser = "chrome";
+      //  browser = "chrome";
         open("https://le-sedo.devel/");// тест(дев)
 
     }

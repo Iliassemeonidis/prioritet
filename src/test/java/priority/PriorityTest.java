@@ -2,15 +2,13 @@ package priority;
 
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.junit.ScreenShooter;
 import createResolution.CreateResolution;
 import fields.Fields;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runners.Parameterized;
-import org.w3c.dom.Text;
+import proxy.Proxy;
 import ru.idtm.documino.*;
 
 import java.io.File;
@@ -19,7 +17,6 @@ import java.util.Random;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.source;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class PriorityTest {
@@ -128,7 +125,7 @@ public class PriorityTest {
     public void tess_90() {
         //Configuration.headless = true;
         //Configuration.startMaximized = true;
-        OpenBrowser.openLeProd();
+        OpenBrowser.openLeTest();
         corentUrl = url();
         /// sleep(10000);
         UserChange.comInAutotest1();
@@ -590,7 +587,8 @@ public class PriorityTest {
     public void test_151() {
         WorkWithDocuments.tryToFindDocWithDescription(description);
     }
-////
+
+    ////
 ////    //    //    @Test
 ////////    public void test_152() { // нужно его доработать
 ////////        // редактируем контент
@@ -866,9 +864,10 @@ public class PriorityTest {
         sleep(10000);
         Buttons.sing();
     }
-//
+
+    //
 //    //
-////        //////// резолюция
+//////        //////// резолюция
     @Test
     public void test_191() {
 ////        sleep(1000);
@@ -912,7 +911,7 @@ public class PriorityTest {
 
         $(byText("Не удалось создать резолюцию")).shouldNotBe(visible);
     }
-
+//
     @Test
     public void test_192() {
 //        // резолюция с федеративным пользаком
@@ -963,7 +962,7 @@ public class PriorityTest {
     @Test
     public void test_193() {
 
-       sleep(1000);
+        sleep(1000);
         $(byText("Завершенные задания")).click();
         sleep(10000);
         $("#taskTypes").setValue("Подписание");
@@ -979,114 +978,185 @@ public class PriorityTest {
             $$(byText("Подписание")).first().click();
         }
 
-       //  проверка фильров на вкладкк резолюция по организации
+        //  проверка фильров на вкладкк резолюция по организации
         sleep(10000);
         System.out.println($$(byText("Резолюции")).size());
         $$(byText("Резолюции")).last().click();
-        sleep(10000);
 
+        sleep(10000);
         $(".delete").click();
         sleep(10000);
-        $("#organizationId").click();
+
+        $("div.filter-item:nth-child(1) > div:nth-child(1)").click();
         sleep(1000);
         $(byText("ПАО \"Россети\"")).click();
-        sleep(1000);
-        $(".resolutions-node-container").click();
-        sleep(1000);
+        $(byText("ПАО \"Россети\"")).click();
+        sleep(10000);
         $$(".resolutions-node-container").shouldHaveSize(1);
         sleep(1000);
     }
-//
+
+
     @Test
     public void test_194() {
         $(".delete").click();
         sleep(10000);
-        $("#organizationId").click();
+        $("div.filter-item:nth-child(1) > div:nth-child(1)").click();
         sleep(1000);
         $(byText("ПАО \"ЛЕНЭНЕРГО\"")).click();
-        sleep(1000);
-        $(".resolutions-node-container").click();
-        sleep(1000);
+        $(byText("ПАО \"ЛЕНЭНЕРГО\"")).click();
+        sleep(10000);
         $$(".resolutions-node-container").shouldHaveSize(1);
+        sleep(1000);
+        $(".delete").click();
     }
-//
+
+
     @Test
     public void test_195() {
-//        //  по инициатору
-        $(".delete").click();
         // по инициатору
         $("#initiatorId").setValue(AUTOTEST_NAME2);
         sleep(10000);
-        $(byText("Автотест2 , Сотрудник")).click();
+        if (!$(byText("Автотест2 , Сотрудник")).is(visible)) {
+
+            $("div.filter-item:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > button:nth-child(1)").click();
+            sleep(1000);
+            $("#query").setValue(AUTOTEST_NAME2);
+            sleep(10000);
+            if ($(byText(AUTOTEST_NAME2)).is(visible)) {
+                $(byText(AUTOTEST_NAME2)).click();
+            } else if ($(byText(DEPARTMENT2)).is(visible)) {
+                $(byText(DEPARTMENT2)).click();
+            } else if ($(byText("Тестовый Филиал")).is(visible)) {
+                $(byText("Тестовый Филиал")).click();
+            }
+            $$(byText("Выбрать")).last().click();
+        } else {
+
+            $(byText("Автотест2 , Сотрудник")).click();
+        }
         $$(".resolutions-node-container").shouldHaveSize(1);
+    }
 
+
+    @Test
+    public void test_196() {
+        // по инициатору
         $(".delete").click();
-
         $("#initiatorId").setValue(AUTOTEST_NAME3);
         sleep(10000);
         $(byText("Автотест3 , Сотрудник")).click();
         sleep(1000);
         $$(".resolutions-node-container").shouldHaveSize(1);
-        $(".delete").click();
 
     }
-//
+
+
     @Test
-    public void test_196() {
-//        //  по исполнителю
+    public void test_197() {
+        //  по исполнителю федеративному
+        $(".delete").click();
         $("#performerId").click();
         sleep(10000);
         $(byText("Del Dep 22222222, Del dep 2222222")).click();
         sleep(1000);
         $$(".resolutions-node-container").shouldHaveSize(1);
         sleep(10000);
+    }
+
+    @Test
+    public void test_198() {
+        //  по исполнителю обычному
         $(".delete").click();
         sleep(1000);
         $("#performerId").click();
         sleep(1000);
-        $(byText(AUTOTEST5)).click();
+        $(byText("Автотест5 , Сотрудник")).click();
         $$(".resolutions-node-container").shouldHaveSize(1);
     }
-////
-//
-//    @Test
-//    public void test_197() {
-//        // идем к исполнителю и ищем у него нашу резолюцию и создаем под резолюцию
-//        UserChange.exit();
-//        UserChange.comInAutotest5();
-//        WorkWithDocuments.visibleElementWithText("Все задания", "Мои задания");
-//        WorkWithDocuments.tryToFindDocWithDescription(description);
-//    }
-//
-//
-//    @Test
-//    public void test_198() {
-//////        // идем к исполнителю и ищем у него нашу резолюцию и создаем под резолюцию
-//////        // как закроют блокер дописать
-//
-//Buttons.createOnResolution();
-//
-//CreateResolution.createWithautButRes();
-//
-//        Buttons.execute();
-//
-//        $("#reportText").setValue("Test");
-//        $(byText("Отрпаить")).click();
-//
-//
-//
-///// после создания под резолюции и исполение
-//        $(byText("Исполнение резолюции")).shouldBe(visible);
-//        sleep(1000);
-//        $(byText("Продолжить с отзывом")).click();
-//
-//
-//    }
-////
-//
-////
-////    ///////////// чать 2 Исх, Вх, Внутр, ИП////////////////////////
-//
+
+    @Test
+    public void test_199() {
+        // идем к исполнителю и ищем у него нашу резолюцию и создаем под резолюцию
+        UserChange.exit();
+        UserChange.comInAutotest5();
+        WorkWithDocuments.visibleElementWithText("Все задания", "Мои задания");
+        WorkWithDocuments.tryToFindDocWithDescription(description);
+    }
+
+    @Test
+    public void test_200() {
+
+        //// идем к исполнителю и ищем у него нашу резолюцию и создаем под резолюцию
+        sleep(1000);
+        Buttons.requisites();
+        $("#id").scrollIntoView(true);
+        identifier = $("#id").getValue();
+        sleep(10000);
+        Buttons.createOnResolution();
+        sleep(1000);
+        CreateResolution.createUnderResolution();
+        $(byText("Резолюция создана")).shouldBe(visible);
+        sleep(10000);
+
+    }
+
+
+    @Test
+    public void test_201() {
+
+        Buttons.execute();
+        sleep(1000);
+        $("#reportText").setValue("Test");
+        if ($(byText("Отправить")).is(visible)) {
+            $(byText("Отправить")).click();
+        } else {
+            $("button.empty-purple:nth-child(4)").click();
+        }
+
+        $(byText("Исполнение резолюции")).shouldBe(visible);
+        sleep(1000);
+        $(byText("Продолжить с отзывом")).click();
+
+    }
+
+
+    @Test
+    public void test_202() {
+        sleep(1000);
+        $(byText("Задание завершено")).shouldBe(visible);
+    }
+
+    @Test
+    public void test_203() {
+        // находим наш документ и проверяем что пдрезолюция в статусе Отозвана
+        sleep(10000);
+        Buttons.searchIcon();
+        sleep(1000);
+        $(byText("По документам")).click();
+        $("div.input-field-container:nth-child(9) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)").scrollIntoView(true);
+        $("div.input-field-container:nth-child(9) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)").setValue(identifier);
+        sleep(1000);
+        Buttons.search();
+        sleep(10000);
+        if ($(byText("Auto-test777")).is(visible)) {
+            $$(byText("Auto-test777")).first().click();
+        } else if ($(byText(AUTOTEST_NAME2)).is(visible)) {
+            $$(byText(AUTOTEST_NAME2)).first().click();
+        }
+
+        sleep(10000);
+
+        $$(byText("Резолюции")).last().click();
+        sleep(10000);
+        $(".m-r-4").click();
+        sleep(100);
+        $(byText("Отозвана")).shouldBe(visible);
+    }
+
+
+//    ///////////// чать 2 Исх, Вх, Внутр, ИП////////////////////////
+
 
     @Test
     public void test_229() {
@@ -1312,7 +1382,7 @@ public class PriorityTest {
     }
 
 
-//    /// переходим к проверке оформления
+    //    /// переходим к проверке оформления
 ////    @Test
 ////    public void test_241() {}
 ////    @Test
@@ -1890,8 +1960,13 @@ public class PriorityTest {
         WorkWithDocuments.tryToFindDoc(registrationNumber, "Подписание");
         sleep(1000);
         Buttons.sing();
-        sleep(1000);
-        $(byText("Удалить")).shouldBe(visible);
+
+
+        // не уверен, но вроде этот блок не нужен
+//        sleep(1000);
+//        $(byText("Удалить")).shouldBe(visible);
+
+
     }
 
     @Test
@@ -1904,7 +1979,6 @@ public class PriorityTest {
         System.out.println(temporaryNumber);
         sleep(1000);
 
-        //$("#dss_doc_status").scrollIntoView(true);
         $(".wrapper > button:nth-child(2)").click();
         $("#status").click();
         sleep(1000);
@@ -1939,7 +2013,7 @@ public class PriorityTest {
             sleep(10000);
         }
         Buttons.search();
-        sleep(25000);
+        sleep(28000);
 
         $("div.check-box-container:nth-child(2) > div:nth-child(1)").click();
         $$(byText("Выбрать")).last().click();
@@ -1963,24 +2037,35 @@ public class PriorityTest {
     @Test
     public void test_301() {
         Buttons.printCart();
+        sleep(1000);
+        $(byText("Произошла ошибка при формировании документа")).shouldNotBe(visible);
 
     }
 
     @Test
     public void test_302() {
+        /// скачиваем контент
+        sleep(1000);
         Buttons.content();
+        sleep(1000);
         $("div.content-action-icon:nth-child(2)").click();
         sleep(10000);
     }
 
     @Test
     public void test_303() {
+        // печатем контент
         $("div.content-action-icon:nth-child(3)").click();
         sleep(10000);
     }
 
     @Test
     public void test_304() {
+        // удаляем доверенность
+
+        Proxy.createProxy();
+
+        sleep(10000);
         Buttons.delete();
         $(byText("Удалить документ")).shouldBe(visible);
         $$(byText("Удалить")).last().click();
@@ -1993,7 +2078,7 @@ public class PriorityTest {
         $(byText("Документ помещен в корзину")).shouldBe(visible);
     }
 
-//// протокол правления
+// протокол правления
 
     @Test
     public void test_305() {
@@ -2329,14 +2414,14 @@ public class PriorityTest {
     @Test
     public void test_337() {
         /// харкод на время лe прода
-         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
+        if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
 
             CreateDocument.createGovernanceDocuments("ДОГОВОРНАЯ РАБОТА (ВОЛС)", "Первичная документация", "Авансовый отчет");
-             sleep(1000);
-             Content.contentUpload(ORDER_DOC);
-             sleep(1000);
-             Buttons.requisites();
-         }
+            sleep(1000);
+            Content.contentUpload(ORDER_DOC);
+            sleep(1000);
+            Buttons.requisites();
+        }
 
     }
 
@@ -2392,15 +2477,14 @@ public class PriorityTest {
         }
     }
 
-        /////////////////// Договор (Волс)
+    /////////////////// Договор (Волс)
     @Test
     public void test_341() {
         // временно
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
 
 
-                CreateDocument.createWithTowNames("ДОГОВОРНАЯ РАБОТА (ВОЛС)", "Договоры");
-
+            CreateDocument.createWithTowNames("ДОГОВОРНАЯ РАБОТА (ВОЛС)", "Договоры");
 
 
             Buttons.content();
@@ -2549,6 +2633,7 @@ public class PriorityTest {
             WorkWithDocuments.tryToFindDocWithDescription(description);
         }
     }
+
     @Test
     public void test_353() {
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
@@ -2852,6 +2937,7 @@ public class PriorityTest {
 
         }
     }
+
     @Test
     public void test_369() {
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
@@ -2935,6 +3021,7 @@ public class PriorityTest {
             $("div.scroll-bar:nth-child(1)").shouldHave(Condition.text("ответ"));
         }
     }
+
     @Test
     public void test_373() {
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
@@ -3025,6 +3112,7 @@ public class PriorityTest {
 
         }
     }
+
     @Test
     public void test_375() {
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
@@ -3213,6 +3301,7 @@ public class PriorityTest {
 
         }
     }
+
     @Test
     public void test_391() {
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
@@ -3233,6 +3322,7 @@ public class PriorityTest {
             WorkWithDocuments.signedBySociety(ANSWER);
         }
     }
+
     @Test
     public void test_394() {
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
@@ -3399,6 +3489,7 @@ public class PriorityTest {
             sleep(1000);
         }
     }
+
     @Test
     public void test_408() {
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
@@ -3758,6 +3849,7 @@ public class PriorityTest {
         }
 
     }
+
     @Test
     public void test_439() {
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
@@ -3809,20 +3901,20 @@ public class PriorityTest {
         }
     }
 
-    //@Test
-//    public void test_444() {
-//    }
+    @Test
+    public void test_444() {
+    }
 
 
-    //@Test
-//    public void test_445() {
-//    }
+    @Test
+    public void test_445() {
+    }
 
 
-    //@Test
-//    public void test_446() {
-//    }
-//////////////////////////Договоры (Кубаньэнерго)///////
+    @Test
+    public void test_446() {
+    }
+////////////////////////Договоры (Кубаньэнерго)///////
 
 
     @Test
@@ -3947,14 +4039,16 @@ public class PriorityTest {
         }
 
     }
+//
     @Test
     public void test_457() {
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
             // завершаем регистрацию
-            Buttons.allTasks();
+           registrationNumber = "ВР-14393";
+//            Buttons.allTasks();
             sleep(10000);
             WorkWithDocuments.tryToFindDocWithDescription(registrationNumber);
-
+//
         }
     }
 
@@ -3978,7 +4072,15 @@ public class PriorityTest {
                 $(byText("5")).click();
             }
             sleep(1000);
-            Content.contentUploadMax(ANSWER);
+
+            System.out.println($$("input").size());
+
+            int size = $$("input").size();
+            if (size==5) {
+                $$("input").get(2).uploadFile(new File(ANSWER));
+            }
+
+
             sleep(10000);
             $$(byText("Сохранить")).last().click();
         }
@@ -3986,8 +4088,9 @@ public class PriorityTest {
 
     @Test
     public void test_459() {
+
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
-            sleep(10000);
+            sleep(20000);
             Buttons.searchIcon();
             sleep(10000);
             $(byText("По документам")).click();
@@ -4013,6 +4116,7 @@ public class PriorityTest {
     public void test_460() {
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
             Buttons.requisites();
+            sleep(1000);
             $("#dss_reg_number").shouldHave(value(registrationNumber));
 
         }
@@ -4099,6 +4203,7 @@ public class PriorityTest {
         }
 
     }
+
     @Test
     public void test_467() {
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
@@ -4130,6 +4235,7 @@ public class PriorityTest {
         }
 
     }
+
     @Test
     public void test_470() {
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
@@ -4139,6 +4245,7 @@ public class PriorityTest {
         }
 
     }
+
     @Test
     public void test_471() {
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
@@ -4199,6 +4306,7 @@ public class PriorityTest {
         }
 
     }
+
     @Test
     public void test_475() {
         // заполняем и сораняем
@@ -4245,6 +4353,7 @@ public class PriorityTest {
         }
 
     }
+
     @Test
     public void test_477() {
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {

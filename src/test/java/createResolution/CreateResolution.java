@@ -1,11 +1,12 @@
 package createResolution;
 
 import com.codeborne.selenide.Condition;
+import org.openqa.selenium.By;
 import ru.idtm.documino.Buttons;
 
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selenide.*;
 
 public class CreateResolution {
     public static String inWork = "В работу";
@@ -102,8 +103,8 @@ public class CreateResolution {
         $("div.el-dialog__footer:nth-child(3) > span:nth-child(1) > button:nth-child(2)").click();
     sleep(1000);
     }
-   public static void createWithautButRes() {
-        sleep(10000);
+   public static void createUnderResolution() {
+        //sleep(10000);
 
         // инициатор
 //        $("#dsidInitiatorEmpl").setValue("Босс12");
@@ -117,19 +118,19 @@ public class CreateResolution {
         sleep(1000);
         $(byText(fastOneDay)).click();
         // описание
-        $(byText(inWork)).click();
+        $$(byText(inWork)).last().click();
+        sleep(1000);
         // контролер
 //        $("div.input-field-container:nth-child(7) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > small:nth-child(1)").click();
 //        sleep(1000);
 //        $("#dsidControllerEmpl").setValue("Директор3");
 //        sleep(1000);
 //        $(byText(director3)).click();
-        $(byText("Сохранить и разослать")).scrollIntoView(false);
-        $(byText("Сохранить и разослать")).click();
+
+       $$(byXpath("//*[text()='Сохранить и разослать']/..")).last().click();
 
 
-//        $("div.el-dialog__footer:nth-child(3) > span:nth-child(1) > button:nth-child(2)").scrollIntoView(true);
-//        $("div.el-dialog__footer:nth-child(3) > span:nth-child(1) > button:nth-child(2)").click();
+
 
     }
 
