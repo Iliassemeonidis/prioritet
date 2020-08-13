@@ -79,4 +79,11 @@ public class OpenBrowser {
     }
 
 
+    public static void openKubEnergoProd() {
+        browser = "firefox";
+        open("http://172.18.48.233/");// кубань энегрго прод
+
+    }
+
+
 }

@@ -3901,20 +3901,20 @@ public class PriorityTest {
         }
     }
 
-    @Test
-    public void test_444() {
-    }
-
-
-    @Test
-    public void test_445() {
-    }
-
-
-    @Test
-    public void test_446() {
-    }
-////////////////////////Договоры (Кубаньэнерго)///////
+//    @Test
+//    public void test_444() {
+//    }
+//
+//
+//    @Test
+//    public void test_445() {
+//    }
+//
+//
+//    @Test
+//    public void test_446() {
+//    }
+//////////////////////Договоры (Кубаньэнерго)///////
 
 
     @Test
@@ -4044,11 +4044,10 @@ public class PriorityTest {
     public void test_457() {
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
             // завершаем регистрацию
-           registrationNumber = "ВР-14393";
-//            Buttons.allTasks();
+            Buttons.allTasks();
             sleep(10000);
             WorkWithDocuments.tryToFindDocWithDescription(registrationNumber);
-//
+
         }
     }
 
@@ -4076,8 +4075,10 @@ public class PriorityTest {
             System.out.println($$("input").size());
 
             int size = $$("input").size();
-            if (size==5) {
+            if (size == 5) {
                 $$("input").get(2).uploadFile(new File(ANSWER));
+            } else if (size==6){
+                $$("input").get(3).uploadFile(new File(ANSWER));
             }
 
 
@@ -4091,23 +4092,10 @@ public class PriorityTest {
 
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getVolsSt())) {
             sleep(20000);
-            Buttons.searchIcon();
+            Buttons.complete_tasks();
+            sleep(1000);
+            $$(byText("Регистрация")).first().click();
             sleep(10000);
-            $(byText("По документам")).click();
-            sleep(1000);
-            if (!$("#types").is(visible)) {
-                $(byText("По документам")).click();
-            }
-            $("#types").setValue("Договор");
-            sleep(1000);
-            $(byText("Договор (КЭ)")).click();
-            sleep(1000);
-            $("div.input-field-container:nth-child(6) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)").setValue(registrationNumber);
-
-            Buttons.search();
-            sleep(10000);
-
-            $$(byText(description)).first().click();
 
         }
     }
@@ -4326,7 +4314,12 @@ public class PriorityTest {
                 $(byText("5")).click();
             }
             sleep(1000);
-            Content.contentUploadMax(ANSWER);
+            int size = $$("input").size();
+            if (size == 5) {
+                $$("input").get(2).uploadFile(new File(ANSWER));
+            } else if (size==6){
+                $$("input").get(3).uploadFile(new File(ANSWER));
+            }
             sleep(10000);
             $$(byText("Сохранить")).last().click();
 
@@ -4371,7 +4364,9 @@ public class PriorityTest {
         }
     }
 
-    //@Test
+
+
+//     @Test
 //    public void test_400() {
 //    }
 
