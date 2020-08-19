@@ -4795,6 +4795,9 @@ public class PriorityTest {
     public void test_467() {
         if (corentUrl.equals(OpenBrowser.getLeTest()) || corentUrl.equals(OpenBrowser.getKeEnerrgo())) {
             // на согласование
+            if (!$(byText("На согласование")).is(visible)) {
+               sleep(10000);
+            }
             Buttons.agreement();
             sleep(10000);
         }
