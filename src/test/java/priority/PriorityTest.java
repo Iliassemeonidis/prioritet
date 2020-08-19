@@ -1771,6 +1771,7 @@ public class PriorityTest {
             UserChange.comInAutotest1();
         }
         $(byText("Создать документ")).click();
+         sleep(1000);
         $(byText(INTERNAL_DOCUMENTS)).click();
         sleep(1000);
 
@@ -1778,6 +1779,11 @@ public class PriorityTest {
             $(byText(MEMORANDUM_TEST)).click();
         } else {
             $(byText(MEMORANDUM_TEXT1)).click();
+        }
+
+        if (!$(byText("Создать")).is(visible)) {
+
+            $(byText("Создать")).scrollIntoView(true);
         }
         $(byText("Создать")).click();
 
