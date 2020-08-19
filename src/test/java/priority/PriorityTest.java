@@ -201,91 +201,91 @@ public class PriorityTest {
 
     }
 
-////    @Test
-////    public void tess_96() {
-////        // проверка поиска по рег номеру
-////        $(byText("Мои задания")).scrollIntoView(true);
-////        if (!$(byText("Все задания")).is(visible)) {
-////            $(byText("Мои задания")).click();
-////        }
-////
-////        $(byText("Все задания")).click();
-////        sleep(1000);
-////        if ($(byText("Система")).is(visible)) {
-////            $$(byText("Система")).first().click();
-////        } else if ($(byText("СЭДО")).is(visible)) {
-////            $$(byText("СЭДО")).first().click();
-////        } else if ($(byText("Автотест1")).is(visible)) {
-////            $$(byText("Автотест1")).first().click();
-////        }
-////        sleep(10000);
-////
-////        Buttons.requisites();
-////        registrationNumber = $(byXpath("//*[@id=\"dss_reg_number\"]")).getValue();
-////        sleep(1000);
-////        System.out.println(registrationNumber);
-////        temporaryNumber = $(byXpath("//*[@id=\"dss_work_number\"]")).getValue();
-////        System.out.println(temporaryNumber);
-////
-////    }
-////
-////    @Test
-////    public void tess_97() {
-////        Buttons.searchIcon();
-////        $(byText("По документам")).click();
-////        sleep(1000);
-////        if (corentUrl.equals(OpenBrowser.getLeTest())) {
-////            $("div.input-field-container:nth-child(5) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)").setValue(registrationNumber);
-////        }
-////        else if (corentUrl.equals(OpenBrowser.getVolsSt())) {
-////            $("div.input-field-container:nth-child(5) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)").setValue(registrationNumber);
-////        }
-////        sleep(10000);
-////        $(byText("Искать")).click();
-////        sleep(1000);
-////        $(".table-scroll-bar").shouldNotHave(text("Нет данных для отображения"));
-////
-////    }
-////
-////    @Test
-////    public void tess_98() {
-////        $(byText("По документам")).click();
-////
-////        if (corentUrl.equals(OpenBrowser.getLeTest())) {
-////            $("div.input-field-container:nth-child(7) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)").setValue(temporaryNumber);
-////        } else if (corentUrl.equals(OpenBrowser.getVolsSt())) {
-////            $("div.input-field-container:nth-child(7) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)").setValue(temporaryNumber);
-////        }
-////        $(byText("Искать")).click();
-////        sleep(1000);
-////        $(".table-scroll-bar").shouldNotHave(text("Нет данных для отображения"));
-////
-////    }
+//    @Test
+//    public void tess_96() {
+//        // проверка поиска по рег номеру
+//        $(byText("Мои задания")).scrollIntoView(true);
+//        if (!$(byText("Все задания")).is(visible)) {
+//            $(byText("Мои задания")).click();
+//        }
 //
-////    @Test
-////    public void tess_99() {
-////// поиск по датам
-////        //Buttons.searchIcon();
-////        $(byText("По документам")).click();
-////        if (corentUrl.equals(OpenBrowser.getLeTest())) {
-////            $("div.input-field-container:nth-child(6) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)").click();
-////            sleep(1000);
-////            int val = $$(byText("1")).size();
-////            $$(byText("1")).get(val - 2).click();
-////            sleep(1000);
-////            $("div.input-field-container:nth-child(6) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > input:nth-child(1)").click();
-////            sleep(1000);
-////            val = $$(byText("5")).size();
-////
-////            $$(byText("5")).get(val - 2).click();
-////        }
-////        $(byText("Искать")).click();
-////        sleep(10000);
-////        $(".table-scroll-bar").shouldNotHave(text("Нет данных для отображения"));
-////    }
+//        $(byText("Все задания")).click();
+//        sleep(1000);
+//        if ($(byText("Система")).is(visible)) {
+//            $$(byText("Система")).first().click();
+//        } else if ($(byText("СЭДО")).is(visible)) {
+//            $$(byText("СЭДО")).first().click();
+//        } else if ($(byText("Автотест1")).is(visible)) {
+//            $$(byText("Автотест1")).first().click();
+//        }
+//        sleep(10000);
 //
+//        Buttons.requisites();
+//        registrationNumber = $(byXpath("//*[@id=\"dss_reg_number\"]")).getValue();
+//        sleep(1000);
+//        System.out.println(registrationNumber);
+//        temporaryNumber = $(byXpath("//*[@id=\"dss_work_number\"]")).getValue();
+//        System.out.println(temporaryNumber);
 //
-        ///////////////////// приказ
+//    }
+//
+//    @Test
+//    public void tess_97() {
+//        Buttons.searchIcon();
+//        $(byText("По документам")).click();
+//        sleep(1000);
+//        if (corentUrl.equals(OpenBrowser.getLeTest())) {
+//            $("div.input-field-container:nth-child(5) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)").setValue(registrationNumber);
+//        }
+//        else if (corentUrl.equals(OpenBrowser.getVolsSt())) {
+//            $("div.input-field-container:nth-child(5) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)").setValue(registrationNumber);
+//        }
+//        sleep(10000);
+//        $(byText("Искать")).click();
+//        sleep(1000);
+//        $(".table-scroll-bar").shouldNotHave(text("Нет данных для отображения"));
+//
+//    }
+//
+//    @Test
+//    public void tess_98() {
+//        $(byText("По документам")).click();
+//
+//        if (corentUrl.equals(OpenBrowser.getLeTest())) {
+//            $("div.input-field-container:nth-child(7) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)").setValue(temporaryNumber);
+//        } else if (corentUrl.equals(OpenBrowser.getVolsSt())) {
+//            $("div.input-field-container:nth-child(7) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)").setValue(temporaryNumber);
+//        }
+//        $(byText("Искать")).click();
+//        sleep(1000);
+//        $(".table-scroll-bar").shouldNotHave(text("Нет данных для отображения"));
+//
+//    }
+
+//    @Test
+//    public void tess_99() {
+//// поиск по датам
+//        //Buttons.searchIcon();
+//        $(byText("По документам")).click();
+//        if (corentUrl.equals(OpenBrowser.getLeTest())) {
+//            $("div.input-field-container:nth-child(6) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)").click();
+//            sleep(1000);
+//            int val = $$(byText("1")).size();
+//            $$(byText("1")).get(val - 2).click();
+//            sleep(1000);
+//            $("div.input-field-container:nth-child(6) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > input:nth-child(1)").click();
+//            sleep(1000);
+//            val = $$(byText("5")).size();
+//
+//            $$(byText("5")).get(val - 2).click();
+//        }
+//        $(byText("Искать")).click();
+//        sleep(10000);
+//        $(".table-scroll-bar").shouldNotHave(text("Нет данных для отображения"));
+//    }
+
+
+        /////////////////// приказ
     @Test
     public void test_125() {
         //  CreateDocument.createInDoc(REGULATORY_DOCUMENTS, ORDER_DOCUMENTS);
@@ -1215,7 +1215,7 @@ public class PriorityTest {
     }
 
 
-    ///////// чать 2 Исх, Вх, Внутр, ИП////////////////////////
+    /////// чать 2 Исх, Вх, Внутр, ИП////////////////////////
 
 
     @Test
@@ -1235,6 +1235,8 @@ public class PriorityTest {
         System.out.println(corentUrl);
         if (corentUrl.equals(OpenBrowser.getLeProd())) {
             CreateDocument.create(OUTPUTDOCUMENT, OUTPUTDOCUMENT_MESSAGE);
+        } else if (corentUrl.equals(OpenBrowser.getKeEnerrgo())) {
+            CreateDocument.create(OUTPUTDOCUMENT);
         } else {
             CreateDocument.createDoc(OUTPUTDOCUMENT, OUTPUTDOCUMENT1);
 
