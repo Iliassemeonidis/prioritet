@@ -1441,7 +1441,13 @@ public class PriorityTest {
         sleep(10000);
         Buttons.registerApproved();
         sleep(10000);
-        $(byText("Отправить внутренним адресатам")).shouldBe(visible);
+        if (!corentUrl.equals(OpenBrowser.getKeEnerrgo())) {
+
+            $(byText("Отправить внутренним адресатам")).shouldBe(visible);
+        }
+        Buttons.history();
+        sleep(1000);
+        $(byText("Зарегистрировано")).shouldBe(visible);
     }
 
     @Test
