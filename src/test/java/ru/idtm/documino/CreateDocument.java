@@ -6,8 +6,8 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CreateDocument {
-    
-    public static void create(String documentName){
+
+    public static void create(String documentName) {
         if (!$(byText("Создать документ")).is(Condition.visible)) {
             UserChange.exit();
             UserChange.comInAutotest1();
@@ -19,8 +19,8 @@ public class CreateDocument {
         if (visible) {
             $(byText(documentName)).click();
 
-        }else {
-           // $(byText("Создать документ")).click();
+        } else {
+            // $(byText("Создать документ")).click();
             $("html body.el-popup-parent--hidden div.el-dialog__wrapper div.el-dialog div.el-dialog__body div div.dialogue-container div.items-container div.scroll-wrap div.search-input-wrapper div.input-with-select.el-input input.el-input__inner").setValue(documentName);
             $$(byText(documentName)).first().click();
             sleep(10000);
@@ -32,7 +32,8 @@ public class CreateDocument {
         }
         $(byText("Создать")).click();
     }
-    public static void createDoc(String documentName,String otherNAme){
+
+    public static void createDoc(String documentName, String otherNAme) {
 
         $(byText("Создать документ")).click();
 
@@ -41,13 +42,13 @@ public class CreateDocument {
         if ($(byText(documentName)).is(Condition.visible)) {
             $(byText(documentName)).click();
 
-           sleep(1000);
+            sleep(1000);
             if ($$(byText(otherNAme)).size() > 3) {
 
-                    $(byText(otherNAme)).click();
+                $(byText(otherNAme)).click();
             }
-        }else {
-           // $(byText("Создать документ")).click();
+        } else {
+
             $("html body.el-popup-parent--hidden div.el-dialog__wrapper div.el-dialog div.el-dialog__body div div.dialogue-container div.items-container div.scroll-wrap div.search-input-wrapper div.input-with-select.el-input input.el-input__inner").setValue(documentName);
 
             sleep(10000);
@@ -64,16 +65,16 @@ public class CreateDocument {
         $(byText("Создать")).click();
     }
 
-    public static void create(String documentName, String otherNAme){
+    public static void create(String documentName, String otherNAme) {
         if (!$(byText("Создать документ")).is(Condition.visible)) {
             UserChange.exit();
             UserChange.comInAutotest1();
         }
         $(byText("Создать документ")).click();
-        sleep(1000);
-        if ($(byText(documentName)).isDisplayed()) {
+        sleep(10000);
+        if ($(byText(documentName)).is(Condition.visible)) {
             $(byText(documentName)).click();
-        }else {
+        } else {
             $("html body.el-popup-parent--hidden div.el-dialog__wrapper div.el-dialog div.el-dialog__body div div.dialogue-container div.items-container div.scroll-wrap div.search-input-wrapper div.input-with-select.el-input input.el-input__inner").setValue(documentName);
             if ($(byText(documentName)).is(Condition.visible)) {
                 $$(byText(documentName)).first().click();
@@ -92,7 +93,8 @@ public class CreateDocument {
         }
         $(byText("Создать")).click();
     }
-    public static void createGovernanceDocuments(String groupName, String protocolGroup, String protocol){
+
+    public static void createGovernanceDocuments(String groupName, String protocolGroup, String protocol) {
 
         if (!$(byText("Создать документ")).is(Condition.visible)) {
             UserChange.exit();
@@ -101,7 +103,7 @@ public class CreateDocument {
 
 
         $(byText("Создать документ")).click();
-         sleep(1000);
+        sleep(1000);
         if (!$(byText(groupName)).is(Condition.visible)) {
             $(byText(groupName)).scrollIntoView(true);
         }
@@ -128,6 +130,54 @@ public class CreateDocument {
             $(byText(protocol)).scrollIntoView(true);
         }
         $$(byText(protocol)).last().click();
+
+
+        if (!($(byText("Создать")).is(Condition.visible))) {
+            $(byText("Создать")).scrollIntoView(true);
+        }
+        $(byText("Создать")).click();
+    }
+
+    public static void createForeGovernanceDocuments(String groupName, String protocolGroup, String protocol, String name) {
+
+        if (!$(byText("Создать документ")).is(Condition.visible)) {
+            UserChange.exit();
+            UserChange.comInAutotest1();
+        }
+
+
+        $(byText("Создать документ")).click();
+        sleep(1000);
+        if (!$(byText(groupName)).is(Condition.visible)) {
+            $(byText(groupName)).scrollIntoView(true);
+        }
+
+        if ($$(byText(groupName)).size() > 1) {
+            $$(byText(groupName)).first().click();
+        } else {
+
+            $(byText(groupName)).click();
+        }
+        sleep(1000);
+        if (!$(byText(protocolGroup)).is(Condition.visible)) {
+            $(byText(protocolGroup)).scrollIntoView(true);
+        }
+        if ($$(byText(protocolGroup)).size() > 1) {
+
+            $$(byText(protocolGroup)).last().click();
+        } else {
+
+            $(byText(protocolGroup)).click();
+        }
+        sleep(10000);
+        if (!$(byText(protocol)).is(Condition.visible)) {
+            $(byText(protocol)).scrollIntoView(true);
+        }
+        $$(byText(protocol)).last().click();
+        if (!$(byText(name)).is(Condition.visible)) {
+            $(byText(name)).scrollIntoView(true);
+        }
+        $$(byText(name)).last().click();
 
 
         if (!($(byText("Создать")).is(Condition.visible))) {

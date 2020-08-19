@@ -112,13 +112,33 @@ public class CreateResolution {
 //                исполнитель
         $("#performers").setValue(AUTOTEST_NAME2);
         sleep(1000);
-        $(byText(AUTOTEST2)).click();
+       if ($(byText(AUTOTEST2)).is(Condition.visible)) {
+           $(byText(AUTOTEST2)).click();
+       } else if ($(byText("Автотест2 , Сотрудник, Тестовый отдел")).is(Condition.visible)) {
+           $(byText("Автотест2 , Сотрудник, Тестовый отдел")).click();
+       } else if ($("div.input-field-container:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > button:nth-child(1)").is(Condition.visible)) {
+           $("div.input-field-container:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > button:nth-child(1)").click();
+           $("#query").setValue(AUTOTEST_NAME2);
+           sleep(10000);
+           if ($(byText(AUTOTEST_NAME2)).is(Condition.visible)) {
+               $(byText(AUTOTEST_NAME2)).click();
+           } else if ($(byText("ИА-КЭ")).is(Condition.visible)) {
+               $(byText("ИА-КЭ")).click();
+           }
+
+           $$(byText("Выбрать")).last().click();
+       }
+
         // контрольный срок
         $("#period").click();
         sleep(1000);
         $(byText(fastOneDay)).click();
         // описание
-        $$(byText(inWork)).last().click();
+       if ($(byText(inWork)).is(Condition.visible)) {
+
+           $$(byText(inWork)).last().click();
+       } else $("#dssDescription").setValue(inWork);
+
         sleep(1000);
         // контролер
 //        $("div.input-field-container:nth-child(7) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > small:nth-child(1)").click();

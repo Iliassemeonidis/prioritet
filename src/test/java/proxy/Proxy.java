@@ -30,6 +30,15 @@ public class Proxy {
     private static String identifier;
     private static String temporaryNumber;
 
+    private static final String AUTOTEST2 = "Автотест2 , Сотрудник, Департамент 2";
+    private static final String AUTOTEST_NAME2 = "Автотест2";
+
+    private static final String AUTOTEST_KUBAN1 = "Автотест1 , Сотрудник, Тестовый отдел";
+    private static final String AUTOTEST_KUBAN2 = "Автотест2 , Сотрудник, Тестовый отдел";
+    private static final String AUTOTEST_KUBAN3 = "Автотест3 , Сотрудник, Тестовый отдел";
+    private static final String AUTOTEST_KUBAN4 = "Автотест4 , Сотрудник, Тестовый отдел";
+    private static final String AUTOTEST_KUBAN5 = "Автотест5 , Сотрудник, Тестовый отдел";
+
     public static void createProxy() {
         sleep(10000);
         CreateDocument.create("ДОВЕРЕННОСТЬ", "ДОВЕРЕННОСТИ");
@@ -59,7 +68,7 @@ public class Proxy {
         }
 
 
-
+// кому
         if ($("#organizationId").is(visible)) {
 
             String organization = $("#organizationId").getValue();
@@ -93,10 +102,16 @@ public class Proxy {
             }
             $$(PATH).findBy(text(BUTTON)).click();
             sleep(1000);
-        } else {
+        }  else{
             $("#dsid_to_whom_issued_empl").setValue(AUTOTEST_NAME5);
-            $(byText(AUTOTEST5_TNT_EMPLOER)).click();
+            sleep(1000);
+            if ($(byText(AUTOTEST5_TNT_EMPLOER)).is(visible)) {
+                $(byText(AUTOTEST5_TNT_EMPLOER)).click();
+            } else if ($(byText(AUTOTEST5)).is(visible)) {
+                $(byText(AUTOTEST5)).click();
+            }
         }
+
 
         // инициатор
         //$("div.form-item-container:nth-child(19) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > button:nth-child(1)").click();
@@ -115,18 +130,34 @@ public class Proxy {
         sleep(10000);
         if (corentUrl.equals(OpenBrowser.gettNt())) {
             $(byText(AUTOTEST1_TNT_EMPLOER)).click();
-        } else {
+        }  else if (corentUrl.equals(OpenBrowser.getKeEnerrgo())) {
+            if ($("div.form-item-container:nth-child(15) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > button:nth-child(1)").is(visible)){
+                $("div.form-item-container:nth-child(15) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > button:nth-child(1)").click();
+                $(byXpath("//input[@id='query']")).setValue(AUTOTEST_NAME2);
+                sleep(10000);
+                if ($(byText("ИА-КЭ")).is(visible)) {
+                    $(byText("ИА-КЭ")).click();
+                }
+            } else {
+                $(byText(AUTOTEST_NAME2)).click();
+            }
+            sleep(1000);
+
+            $$(PATH).findBy(text(BUTTON)).click();
+        }else {
+
             if ($(byText("Автотест1 , Сотрудник, Департамент 1")).is(visible)) {
                 $(byText("Автотест1 , Сотрудник, Департамент 1")).click();
-            } else if ($("div.form-item-container:nth-child(20) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > button:nth-child(1)").is(visible)) {
+            } else if ($(byText(AUTOTEST_KUBAN2)).is(visible)) {
+                $(byText(AUTOTEST_KUBAN2)).click();
+            }else if ($("div.form-item-container:nth-child(20) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > button:nth-child(1)").is(visible)) {
                 $("div.form-item-container:nth-child(20) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > button:nth-child(1)").click();
                 $("#query").setValue(AUTOTEST_NAME1);
                 $(byText(AUTOTEST_NAME1)).click();
                 $$(PATH).findBy(text(BUTTON)).click();
 
             } else if ($("div.form-item-container:nth-child(19) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > button:nth-child(1)").is(visible)) {
-                $("div.form-item-container:nth-child(19) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > button:nth-child(1)")
-                        .click();
+                $("div.form-item-container:nth-child(19) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > button:nth-child(1)").click();
                 sleep(10000);
                 if ($(byXpath("//input[@id='query']")).is(visible)) {
 

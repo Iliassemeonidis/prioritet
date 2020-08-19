@@ -45,12 +45,14 @@ public class Buttons {
     private final static String  FURTHER = "Далее";
     private final static String COMPLETE_TASKS = "Завершенные задания";
     private final static String  CREATE_ON_RESOLUTION = "Создать подрезолюцию";
+    private final static String  TASKS_FROM_ME = "Задания от меня";
 
 
 
 
 
 
+    public static void tasksFromMe(){ $(byText(TASKS_FROM_ME)).click(); }
     public static void createOnResolution(){ $(byText(CREATE_ON_RESOLUTION)).click(); }
     public static void complete_tasks(){ $(byText(COMPLETE_TASKS)).click(); }
     public static void further(){ $(byText(FURTHER)).click(); }

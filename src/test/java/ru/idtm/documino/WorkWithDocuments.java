@@ -58,8 +58,16 @@ public class WorkWithDocuments {
             $$(byText("Договор (КЭ)"))
                     .first()
                     .click();
+        }else if ($(byText("Договоры")).is(Condition.visible)) {
+            $$(byText("Договоры"))
+                    .first()
+                    .click();
         }else if ($(byText("Дополнительное соглашение (КЭ)")).is(Condition.visible)) {
             $$(byText("Дополнительное соглашение (КЭ)"))
+                    .first()
+                    .click();
+        }else if ($(byText("Дополнительное соглашение")).is(Condition.visible)) {
+            $$(byText("Дополнительное соглашение"))
                     .first()
                     .click();
         }else if ($(byText("Выписка из протоколов")).is(Condition.visible)) {
@@ -68,6 +76,18 @@ public class WorkWithDocuments {
                     .click();
         }else if ($(byText("Протокол")).is(Condition.visible)) {
             $$(byText("Протокол"))
+                    .first()
+                    .click();
+        } else if ($(byText("Протоколы органов управления")).is(Condition.visible)) {
+            $$(byText("Протоколы органов управления"))
+                    .first()
+                    .click();
+        } else if ($(byText("Материалы органов управления")).is(Condition.visible)) {
+            $$(byText("Материалы органов управления"))
+                    .first()
+                    .click();
+        }else if ($(byText("Выписки из протоколов органов управления")).is(Condition.visible)) {
+            $$(byText("Выписки из протоколов органов управления"))
                     .first()
                     .click();
         }
