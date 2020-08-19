@@ -61,7 +61,9 @@ public class CreateDocument {
             }
             sleep(10000);
         }
-
+        if (!($(byText("Создать")).is(Condition.visible))) {
+            $(byText("Создать")).scrollIntoView(true);
+        }
         $(byText("Создать")).click();
     }
 
