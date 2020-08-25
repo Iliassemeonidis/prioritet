@@ -93,10 +93,16 @@ public class Proxy {
 
 
             $(byXpath("//*[@id=\"query\"]")).setValue(AUTOTEST_NAME5).pressEnter();
-            sleep(1000);
+            sleep(10000);
             if ($(byText(DEPARTMENT5)).is(visible)) {
 
                 $(byText(DEPARTMENT5)).click();
+            }if ($(byText("Тестовый Филиал")).is(visible)) {
+                $(byText("Тестовый Филиал")).click();
+
+            } else if ($(byText("Тестовый филиал")).is(visible)) {
+                $(byText("Тестовый филиал")).click();
+
             } else {
                 $(byText("Тестовый отдел")).click();
             }

@@ -1,9 +1,5 @@
 package ru.idtm.documino;
 
-import org.junit.Before;
-
-import java.io.*;
-
 import static com.codeborne.selenide.Configuration.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -12,12 +8,15 @@ public class OpenBrowser {
     private static String leSt = "http://172.25.144.151/";
     private static String leProd = "http://172.25.144.163/";
     private static String leTest = "https://le-sedo.devel/";
-    //    private static String volsSt = "http://185.187.112.58/";
-    private static String volsSt = "http://185.187.112.55/";// это прод переделать запись
+    private static String volsSt = "http://185.187.112.58/";
+    private static String volsProd = "http://185.187.112.55/";
     private static String rossSet = "http://172.24.68.146";
     private static String tNt = "https://tnt.documino.com/";
     private static String keEnerrgo ="http://172.18.48.233/";
 
+
+
+    public static String getVolsSt() { return volsSt; }
 
     public static String getKeEnerrgo() { return keEnerrgo; }
 
@@ -33,8 +32,8 @@ public class OpenBrowser {
         return leTest;
     }
 
-    public static String getVolsSt() {
-        return volsSt;
+    public static String getVolsProd() {
+        return volsProd;
     }
 
     public static String getRossSet() {
@@ -44,6 +43,10 @@ public class OpenBrowser {
     public static String gettNt() {
         return tNt;
     }
+
+
+
+
 
     public static void openLeSt() {
         browser = "firefox";
@@ -65,14 +68,12 @@ public class OpenBrowser {
 
     }
 
-    public static void openVolsSt() {
+    public static void openVolsProd() {
         browser = "firefox";
-        // open("http://185.187.112.58/");// волс cт
-        // на время теста
-        open("http://185.187.112.55/");
+        open("http://185.187.112.55/");// прод
 
     }
- public static void openVolsProd() {
+ public static void openVolsSt() {
         browser = "firefox";
         open("http://185.187.112.58/");// волс cт
 

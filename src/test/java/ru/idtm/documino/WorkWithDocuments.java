@@ -5,6 +5,7 @@ import com.codeborne.selenide.Condition;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
@@ -90,6 +91,10 @@ public class WorkWithDocuments {
             $$(byText("Выписки из протоколов органов управления"))
                     .first()
                     .click();
+        }else if ($(byText("Приказ")).is(Condition.visible)){
+            $$(byText("Приказ"))
+                    .first()
+                    .click();
         }
 
     }
@@ -119,6 +124,10 @@ public class WorkWithDocuments {
             if ($(byText("Распорядительные документы")).is(Condition.visible)) {
 
                 $$(byText("Распорядительные документы"))
+                        .first()
+                        .click();
+            }else if ($(byText("Приказ")).is(Condition.visible)){
+                $$(byText("Приказ"))
                         .first()
                         .click();
             } else {
@@ -285,7 +294,14 @@ public class WorkWithDocuments {
         $("div.input-field-container:nth-child(9) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)").setValue(identifier);
         sleep(1000);
         Buttons.search();
+        if ($(byText("Для выполнения поиска необходимо заполнить хотя бы один параметр.")).is(visible)) {
+            $(byText("Ок")).click();
+        }
         sleep(10000);
+        if ($(byText("Нет данных для отображения")).is(visible)) {
+            Buttons.complete_tasks();
+            sleep(1000);
+        }
         if ($(byText("Зарегистрирован")).is(Condition.visible)) {
             $(byText("Зарегистрирован")).click();
         } else if ($(byText(description)).is(Condition.visible)) {
@@ -294,6 +310,9 @@ public class WorkWithDocuments {
         sleep(1000);
         Buttons.history();
         sleep(1000);
+        if (!$(byText("Зарегистрировано")).is(visible)) {
+            $(byText("Зарегистрировано")).scrollIntoView(true);
+        }
         $(byText("Зарегистрировано")).shouldBe(Condition.visible);
 
          Buttons.content();

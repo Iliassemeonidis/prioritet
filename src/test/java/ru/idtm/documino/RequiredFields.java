@@ -63,7 +63,6 @@ public class RequiredFields {
         }
         //String s = $("#dsid_themes").getValue();
         if ($("#dsid_themes").is(Condition.visible)) {
-
             if ($("#dsid_themes").is(empty)) {
                 $("#dsid_themes").setValue("Бизнес-процесс");
                 $(byText("Бизнес-процесс")).click();
@@ -245,10 +244,13 @@ public static void addressee(String name, String emploer) {
 
     public static void singer(String name, String fulleName,String scc) {
 
-        if (!$("#dsid_signer_empl").is(visible)) {
-            $("#dsid_signer_empl").scrollIntoView(true);
+        Buttons.save();
+
+        if ($("#dsid_for_signature_empl").is(visible)) {
+            $("#dsid_for_signature_empl").setValue(name);
+        } else if ($("#dsid_signer_empl").is(visible)) {
+            $("#dsid_signer_empl").setValue(name);
         }
-        $("#dsid_signer_empl").setValue(name);
         sleep(10000);
         if (name.equals(AUTOTEST_NAME2)) {
 

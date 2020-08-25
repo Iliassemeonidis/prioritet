@@ -10,13 +10,13 @@ public class Cheking {
 
     public static String chek(String number, String word) {
 
-        String s[] = $("#dss_reg_number").getValue().split("-");
-        String element;
+        String s[] = number.split("-");
+        String el = null;
         for (int i = 0; i < s.length; i++) {
             if (s[i].equals(word)) {
-                return element =word;
+                el =  word;
             }
         }
-        return element = "";
+        return el;
     }
 }

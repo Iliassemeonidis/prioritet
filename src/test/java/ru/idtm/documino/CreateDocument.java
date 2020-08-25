@@ -34,6 +34,10 @@ public class CreateDocument {
     }
 
     public static void createDoc(String documentName, String otherNAme) {
+        if (!$(byText("Создать документ")).is(Condition.visible)) {
+            UserChange.exit();
+            UserChange.comInAutotest1();
+        }
 
         $(byText("Создать документ")).click();
 
@@ -103,8 +107,8 @@ public class CreateDocument {
             UserChange.comInAutotest1();
         }
 
-
         $(byText("Создать документ")).click();
+
         sleep(1000);
         if (!$(byText(groupName)).is(Condition.visible)) {
             $(byText(groupName)).scrollIntoView(true);
