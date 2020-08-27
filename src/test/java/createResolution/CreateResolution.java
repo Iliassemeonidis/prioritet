@@ -124,6 +124,12 @@ public class CreateResolution {
                $(byText(AUTOTEST_NAME2)).click();
            } else if ($(byText("ИА-КЭ")).is(Condition.visible)) {
                $(byText("ИА-КЭ")).click();
+           } else if ($(byText("Тестовый Филиал")).is(Condition.visible)) {
+               $(byText("Тестовый Филиал")).click();
+           } else if ($(byText("Тестовый филиал")).is(Condition.visible)) {
+               $(byText("Тестовый филиал")).click();
+           } else if (($(byText("Сотрудник"))).is(Condition.visible)) {
+               ($(byText("Сотрудник"))).click();
            }
 
            $$(byText("Выбрать")).last().click();
