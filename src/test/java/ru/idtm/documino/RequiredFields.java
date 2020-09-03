@@ -220,7 +220,7 @@ public static void addressee(String name, String emploer) {
     if($("#dsdt_control_date").is(visible)){
         $("#dsdt_control_date").click();
         sleep(1000);
-        $(byText("15")).click();
+        $$(byText("15")).last().click();
     }
 
 
@@ -239,7 +239,7 @@ public static void addressee(String name, String emploer) {
         $("#dsid_main_performer_empl").setValue(name);
         $(byText(fulleName)).click();
         $("#dsdt_control_date").click();
-        $(byText("15")).click();
+        $$(byText("15")).last().click();
     }
 
     public static void singer(String name, String fulleName,String scc) {
@@ -332,9 +332,7 @@ public static void addressee(String name, String emploer) {
         $$(PATH).findBy(text(BUTTON)).click();
 
         if (!$(byText("Добавить")).isDisplayed()) {
-            $$(byText("Сохранить")).shouldHaveSize(7)
-                    .get(6)
-                    .click();
+            $$(byText("Сохранить")).get($$(byText("Сохранить")).size()-1).click();
         } else $(byText("Добавить")).click();
         sleep(1000);
     }

@@ -111,7 +111,7 @@ public class CreateResolution {
 //        $(byText(boss12)).click();
 //                исполнитель
         $("#performers").setValue(AUTOTEST_NAME2);
-        sleep(1000);
+        sleep(10000);
        if ($(byText(AUTOTEST2)).is(Condition.visible)) {
            $(byText(AUTOTEST2)).click();
        } else if ($(byText("Автотест2 , Сотрудник, Тестовый отдел")).is(Condition.visible)) {
