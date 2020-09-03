@@ -200,7 +200,7 @@ public class PriorityTest {
         $(byText("Созданные мной")).click();
 
         if (corentUrl.equals(OpenBrowser.getKeEnerrgo())) {
-            $("li.list-item-container:nth-child(8) > ul:nth-child(2) > li:nth-child(2)").shouldNotBe(empty);
+            $("li.list-item-container:nth-child(10) > ul:nth-child(2)").shouldNotBe(empty);
         }else $("li.list-item-container:nth-child(9) > ul:nth-child(2)").shouldNotBe(empty);
 
 
@@ -1197,7 +1197,10 @@ public class PriorityTest {
     public void test_235() {
         //Подписант
 //       Fields.singer();
-        if ( $(byXpath("/html/body/div[1]/div[3]/div/div[2]/div[2]/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[9]/div/div/div[1]/div/div/div/div/div/div[1]/button")).isDisplayed()) {
+        if (corentUrl.equals(OpenBrowser.getKeEnerrgo())) {
+
+            Fields.singer(AUTOTEST_NAME1, AUTOTEST_KUBAN1);
+        } else if ( $(byXpath("/html/body/div[1]/div[3]/div/div[2]/div[2]/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[9]/div/div/div[1]/div/div/div/div/div/div[1]/button")).isDisplayed()) {
 
             $(byXpath("/html/body/div[1]/div[3]/div/div[2]/div[2]/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[9]/div/div/div[1]/div/div/div/div/div/div[1]/button")).click();
             $(byXpath("//*[@id=\"query\"]")).setValue(AUTOTEST_NAME1);
@@ -1207,6 +1210,7 @@ public class PriorityTest {
         } else {
             $("#dsid_signer_empl").setValue(AUTOTEST_NAME1);
             sleep(10000);
+
             if ($(byText(AUTOTEST1)).is(visible)) {
                 $(byText(AUTOTEST1)).click();
             } else {
@@ -1740,6 +1744,8 @@ public class PriorityTest {
         // подписант
         if (corentUrl.equals(OpenBrowser.gettNt())) {
             Fields.singer(AUTOTEST_NAME1, AUTOTEST1_TNT_EMPLOER);
+        } else if (corentUrl.equals(OpenBrowser.getKeEnerrgo())) {
+            Fields.singer(AUTOTEST_NAME1, AUTOTEST_KUBAN1);
         } else {
 
             Fields.singer(AUTOTEST_NAME1, DEPARTMENT1, AUTOTEST1, AUTOTEST_ROSSET_ORGAN_NAME1, AUTOTEST_ROSSET_NAME1);
@@ -1752,7 +1758,7 @@ public class PriorityTest {
     @Test
     public void test_280() {
         Buttons.save();
-        sleep(10000);
+        sleep(15000);
         Buttons.registerApproved();
         sleep(1000);
         $(byText("Не удалось выполнить действие")).shouldNot(visible);
@@ -3979,7 +3985,7 @@ public class PriorityTest {
             CreateDocument.createGovernanceDocuments("ДОКУМЕНТЫ ОРГАНОВ УПРАВЛЕНИЯ", "Протоколы", "Протокол Правления");
             Buttons.content();
             Content.contentUpload(ORDER_DOC);
-            sleep(1000);
+            sleep(10000);
         }
     }
 
